@@ -1,0 +1,53 @@
+job_title,description,skills,experience_required,location,match
+AWS Cloud Support Engineer,"Support AWS infrastructure, troubleshoot cloud services, monitor systems and resolve incidents","AWS,Linux,Networking,Troubleshooting",2,London/Remote,1
+Junior IT Support Technician,"Provide first line support for Windows users, troubleshoot hardware and software issues","Windows,Active Directory,Networking,Helpdesk",1,Kent,1
+Cloud Engineer,Design and maintain AWS cloud infrastructure using automation and infrastructure as code,"AWS,Terraform,Linux,Networking,CloudFormation",3,London/Hybrid,1
+Senior Java Developer,Develop enterprise applications using Java and Spring Boot,"Java,Spring Boot,SQL,Git",5,London,0
+Marketing Executive,Plan digital marketing campaigns and manage social media channels,"Marketing,SEO,Social Media,Google Analytics",2,London,0
+AWS Solutions Architect,Design highly available and scalable AWS architectures for enterprise customers,"AWS,Architecture,Networking,Security,Terraform",5,London/Remote,1
+Customer Service Advisor,Handle customer enquiries by telephone and email and resolve account issues,"Customer Service,Communication,CRM",1,Kent,1
+Python Developer,Develop backend applications and APIs using Python and Django,"Python,Django,REST API,SQL",3,Remote,0
+Network Support Technician,"Monitor networks, troubleshoot connectivity problems and configure network equipment","Networking,Cisco,TCP/IP,Troubleshooting",2,Kent,1
+Graphic Designer,Create digital artwork and marketing materials for online campaigns,"Photoshop,Illustrator,Design,Creative",2,London,0
+DevOps Engineer,Build CI/CD pipelines and manage cloud infrastructure and containers,"AWS,Docker,Terraform,CI/CD,Linux",3,Remote,1
+Database Administrator,"Manage production databases, backups, replication and performance tuning","SQL,Oracle,PostgreSQL,Database Administration",4,London,0
+Cloud Support Technician,"Provide technical support for AWS cloud services, investigate incidents and assist with infrastructure monitoring","AWS,Linux,Networking,Support",1,Remote,1
+IT Service Desk Analyst,"Provide first and second line support for Windows users, resolve tickets and troubleshoot Microsoft 365 issues","Windows,Microsoft 365,Active Directory,Helpdesk",1,Kent/Hybrid,1
+Junior AWS Engineer,"Assist with AWS infrastructure, EC2 instances, IAM permissions and cloud monitoring","AWS,EC2,IAM,CloudWatch",1,Remote,1
+Systems Support Engineer,"Maintain Windows and Linux systems, investigate technical incidents and support infrastructure services","Windows,Linux,Networking,Troubleshooting",2,Kent,1
+Junior DevOps Engineer,"Support CI/CD pipelines, Docker containers and cloud infrastructure under the guidance of senior engineers","AWS,Docker,CI/CD,Linux",1,Remote,1
+Network Operations Technician,"Monitor network infrastructure, investigate connectivity issues and escalate complex incidents","Networking,TCP/IP,Monitoring,Troubleshooting",1,Kent/Hybrid,1
+Cloud Operations Analyst,"Monitor cloud environments, investigate alerts and assist with operational support tasks","AWS,CloudWatch,Linux,Monitoring",2,Remote,1
+Infrastructure Support Technician,"Support servers, networks and endpoint systems while resolving infrastructure incidents","Windows,Linux,Networking,Support",2,Kent,1
+AWS Technical Support Associate,Troubleshoot AWS services and assist customers with cloud infrastructure problems,"AWS,Networking,Linux,Troubleshooting",1,Remote,1
+Junior Infrastructure Engineer,"Assist with servers, networking, backups and cloud infrastructure maintenance","Linux,Networking,AWS,Infrastructure",1,Hybrid,1
+Retail Sales Assistant,"Assist customers in store, process purchases and promote products to meet sales targets","Retail,Sales,Customer Service",1,Kent,0
+Digital Marketing Manager,"Develop marketing campaigns, manage social media and analyse advertising performance","Marketing,SEO,Social Media,Analytics",4,London,0
+Senior Java Developer,Design and develop enterprise Java applications using Spring Boot and microservices,"Java,Spring Boot,Microservices,SQL",5,London,0
+Financial Accountant,"Prepare financial reports, reconcile accounts and manage monthly accounting processes","Accounting,Excel,Finance,Reporting",3,London,0
+Graphic Designer,"Create branding, digital artwork and promotional materials for marketing campaigns","Photoshop,Illustrator,Design,Creative",2,London,0
+HR Administrator,"Maintain employee records, arrange interviews and provide administrative support to HR teams","HR,Administration,Recruitment,Excel",1,Kent,0
+Primary School Teacher,"Plan lessons, teach pupils and assess educational progress in a primary school","Teaching,Education,Planning,Assessment",3,Kent,0
+Estate Agent,"Manage property listings, conduct viewings and generate new business from prospective buyers","Sales,Property,Negotiation,Customer Service",2,Kent,0
+Senior Data Scientist,Develop advanced machine learning models and statistical solutions using Python and large datasets,"Python,Machine Learning,Statistics,SQL",6,London,0
+Legal Secretary,"Provide administrative support to solicitors, prepare documents and manage client correspondence","Administration,Legal,Microsoft Office,Communication",2,London,0
+Senior AWS Cloud Engineer,"Lead the design and operation of large AWS environments, mentor engineers and manage complex cloud migrations","AWS,Terraform,Linux,CloudFormation",7,London/Hybrid,0
+Junior Cloud Support Analyst,"Monitor AWS services, respond to alerts and provide first line support for cloud infrastructure","AWS,CloudWatch,Linux,Support",1,Remote,1
+IT Support Engineer,"Provide first and second line technical support, troubleshoot Windows devices and manage user accounts","Windows,Active Directory,Microsoft 365,Networking",2,Kent/Hybrid,1
+Senior Network Engineer,"Design enterprise network infrastructure, manage routing and switching and lead network projects","Cisco,Networking,TCP/IP,Routing",7,London,0
+Cloud Operations Technician,"Monitor cloud infrastructure, investigate incidents and maintain operational documentation","AWS,Monitoring,Linux,Troubleshooting",2,Remote,1
+Junior Systems Administrator,"Maintain Windows servers, manage user accounts and assist with backup and monitoring tasks","Windows,Active Directory,Backup,Networking",1,Kent,1
+DevOps Engineer,Develop automated deployment pipelines and manage containerised workloads in AWS,"AWS,Docker,Kubernetes,CI/CD",4,Remote,1
+Cybersecurity Analyst,"Monitor security events, investigate alerts and support vulnerability management activities","Security,SIEM,Networking,Linux",3,London/Hybrid,1
+Technical Support Analyst,Resolve software and hardware incidents and provide remote technical assistance to employees,"Helpdesk,Windows,Microsoft 365,Troubleshooting",2,Remote,1
+AWS Infrastructure Engineer,Build and maintain scalable AWS infrastructure using Terraform and automation,"AWS,Terraform,Networking,Linux",3,Remote,1
+Restaurant Manager,"Manage restaurant operations, staff rotas, customer service and stock control","Hospitality,Management,Customer Service",4,Kent,0
+Recruitment Consultant,"Source candidates, manage client relationships and meet recruitment placement targets","Recruitment,Sales,Communication,CRM",2,London,0
+Senior Frontend Developer,"Build complex web applications using React, TypeScript and modern JavaScript frameworks","React,TypeScript,JavaScript,HTML",5,Remote,0
+Payroll Administrator,"Process monthly payroll, maintain employee records and resolve payroll queries","Payroll,Excel,Administration,Finance",2,Kent,0
+Project Manager,"Manage large technology projects, budgets, stakeholders and delivery schedules","Project Management,Agile,Budgeting,Leadership",5,London,0
+Office Administrator,"Provide administrative support, organise meetings and maintain company records","Administration,Microsoft Office,Organisation",2,Kent,0
+Warehouse Operative,"Receive deliveries, pick customer orders and maintain stock within a busy warehouse","Warehouse,Stock Control,Logistics",1,Kent,0
+Social Media Specialist,"Create social media content, manage online campaigns and analyse audience engagement","Social Media,Marketing,Content,Analytics",2,Remote,0
+Senior Python Developer,"Design high-performance backend systems using Python, Django and distributed services","Python,Django,APIs,Software Development",6,London,0
+Account Manager,"Manage customer accounts, develop commercial relationships and identify sales opportunities","Sales,Account Management,CRM,Communication",3,London,0

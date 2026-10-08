@@ -1,0 +1,29 @@
+{
+    "name": "Jason Harvey",
+    "target_roles": [
+        "IT Support",
+        "Cloud Support",
+        "AWS Cloud Engineer",
+        "Junior Cloud Engineer",
+        "Junior DevOps"
+    ],
+    "skills": [
+        "AWS",
+        "Linux",
+        "Networking",
+        "Troubleshooting",
+        "Terraform",
+        "Docker",
+        "Windows",
+        "Active Directory",
+        "IT Support",
+        "Cloud Computing",
+        "Cisco",
+        "Python"
+    ],
+    "experience_level": 2,
+    "preferred_work": [
+        "Remote",
+        "Hybrid"
+    ]
+}

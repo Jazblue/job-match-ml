@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobMatch ML</title>
+</head>
+
+<body>
+
+    <h1>JobMatch ML</h1>
+    <p>Intelligent Job Suitability Predictor</p>
+
+    <hr>
+
+    <h2>Analyse a Job</h2>
+
+    <form method="POST">
+
+        <label for="job_title">Job Title</label><br>
+        <input type="text" id="job_title" name="job_title" required>
+        <br><br>
+
+        <label for="description">Job Description</label><br>
+        <textarea id="description"
+                  name="description"
+                  rows="8"
+                  cols="60"
+                  required></textarea>
+        <br><br>
+
+        <label for="skills">Skills</label><br>
+        <input type="text"
+               id="skills"
+               name="skills"
+               placeholder="AWS, Linux, Networking"
+               required>
+        <br><br>
+
+        <label for="experience">Experience Required</label><br>
+        <input type="number"
+               id="experience"
+               name="experience"
+               min="0"
+               required>
+        <br><br>
+
+        <button type="submit">Analyse Job</button>
+
+    </form>
+
+    {% if result %}
+
+    <hr>
+
+    <h2>JobMatch Result</h2>
+
+    <h3>{{ result.job_title }}</h3>
+
+    <h2>{{ "%.2f"|format(result.final_score) }}%</h2>
+
+    <h3>{{ result.rating }}</h3>
+
+    <p>
+        <strong>ML relevance:</strong>
+        {{ "%.2f"|format(result.ml_score) }}%
+    </p>
+
+    <p>
+        <strong>Skill compatibility:</strong>
+        {{ "%.2f"|format(result.skill_score) }}%
+    </p>
+
+    <p>
+        <strong>Experience fit:</strong>
+        {{ "%.0f"|format(result.experience_score) }}%
+    </p>
+
+    <h3>Matched Skills</h3>
+
+    {% if result.matched_skills %}
+        <ul>
+        {% for skill in result.matched_skills %}
+            <li>✓ {{ skill }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No matching skills found.</p>
+    {% endif %}
+
+    <h3>Missing Skills</h3>
+
+    {% if result.missing_skills %}
+        <ul>
+        {% for skill in result.missing_skills %}
+            <li>⚠ {{ skill }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No missing skills.</p>
+    {% endif %}
+
+    <h3>Recommendation</h3>
+
+    <p>{{ result.recommendation }}</p>
+
+    {% endif %}
+
+</body>
+</html>

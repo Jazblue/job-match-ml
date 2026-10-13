@@ -1,3 +1,4 @@
+from pathlib import Path
 import json
 import joblib
 
@@ -20,8 +21,8 @@ with open(r".\data\candidate.json", "r") as file:
 # --------------------------------------------------
 # New job
 # --------------------------------------------------
-with open(r".\data\job.json", "r") as file:
-    job = json.load(file)
+job_path = Path(__file__).resolve().parent.parent / "data" / "job.json"
+job = json.loads(job_path.read_text(encoding="utf-8-sig"))
 
 job_title = job["job_title"]
 description = job["description"]

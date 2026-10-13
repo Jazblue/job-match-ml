@@ -1,243 +1,110 @@
 # JobMatch ML
 
-Machine learning project that predicts how well a job advertisement matches a candidate skills and experience.
+**An explainable machine-learning prototype that helps a job seeker prioritise adverts, compare required skills with their profile, and identify useful learning gaps.**
 
-## Project Goal
+[View the repository](https://github.com/Jazblue/job-match-ml) · [Download the project as a ZIP](https://github.com/Jazblue/job-match-ml/archive/refs/heads/master.zip)
 
-Build an end-to-end machine learning application that analyses job advertisements and produces a job suitability score.
+![JobMatch ML dashboard concept showing a match score, skills and scoring breakdown](docs/images/jobmatch-overview.svg)
+
+## What does the ML do?
+
+JobMatch ML takes a candidate profile and a job advert, then estimates how closely the role fits the candidate. It is designed to make the reasoning easier to inspect rather than returning a score with no explanation.
+
+1. **Reads job-advert text.** The web app can accept a pasted advert. Rule-based text processing looks for a job title, recognised skills and experience requirements.
+2. **Measures text relevance.** A scikit-learn pipeline uses TF-IDF to turn text into numerical features and a Logistic Regression classifier to estimate relevance based on the labelled examples it was trained on.
+3. **Checks skills.** The app compares recognised advert requirements with skills in the candidate profile and highlights matches and gaps.
+4. **Checks experience fit.** The app estimates how well the candidate's experience level fits the role's stated requirement.
+5. **Combines the signals.** The current prototype combines ML relevance (50%), skill compatibility (30%) and experience fit (20%) into one overall suitability score.
+6. **Explains the result.** It displays the score, a match category, recognised matching skills, possible missing skills and a recommendation to help prioritise further research.
+
+## Example results
+
+These are documented functional-test examples from the current prototype, not guarantees of real-world performance.
+
+![Comparison of a relevant cloud support role and an unrelated retail management role](docs/images/example-comparison.svg)
+
+| Test advert | Suitability score | Prototype result |
+|---|---:|---|
+| Junior AWS Cloud Support Engineer | 86.34% | Excellent match |
+| Retail Store Manager | 29.31% | Poor match |
+
+For the cloud-support example, the prototype recognised AWS, Linux, networking, troubleshooting and Windows, and identified CloudWatch as a possible skill gap. For the retail example, it found no recognised skill overlap and returned a lower score.
+
+## How the scoring works
+
+- **50% — ML relevance:** text-based relevance estimated by the trained TF-IDF and Logistic Regression pipeline.
+- **30% — Skill compatibility:** overlap between recognised job requirements and the candidate's listed skills.
+- **20% — Experience fit:** an estimate of how the candidate's experience level compares with the role requirement.
+
+These weights describe the current prototype's scoring design. The final percentage is a **suitability estimate, not a probability of being hired, an employer decision, or a guarantee that an application will succeed**.
 
 ## Technology
 
-- Python
-- pandas
-- NumPy
-- scikit-learn
-- Natural Language Processing (NLP)
-- Machine Learning
-- AWS
+- Python 3.14
+- Flask web application
+- scikit-learn: TF-IDF text features and Logistic Regression
+- pandas and NumPy for dataset handling
+- joblib for saving and loading the trained pipeline
+- Gunicorn for production-style WSGI serving
 
-## Current Status
+## Run it locally
 
-### Phase 1 - Project Setup
+### 1. Download or clone
 
-- [x] Project directory created
-- [x] Python virtual environment created
-- [x] Python 3.14.3 configured
-- [x] pandas installed
-- [x] NumPy installed
-- [x] scikit-learn installed
-- [x] matplotlib installed
-- [x] Jupyter installed
-- [x] Initial jobs.csv dataset created
-- [x] Dataset successfully loaded with pandas
+Download the ZIP using the link at the top, or clone the repository:
 
-### Initial Dataset
+```bash
+git clone https://github.com/Jazblue/job-match-ml.git
+cd job-match-ml
+```
 
-The initial development dataset contains 12 job advertisements.
+### 2. Create a virtual environment
 
-The current match field is:
+Windows PowerShell:
 
-- 1 = good match
-- 0 = poor match
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+```
 
-This dataset is for development and learning only. It will be expanded before the model is considered meaningful.
+Linux or macOS:
 
-## Planned Machine Learning Pipeline
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+```
 
-Job Advertisement
-        |
-        v
-Text Processing
-        |
-        v
-TF-IDF
-        |
-        v
-ML Classifier
-        |
-        v
-Match Probability
-        |
-        v
-Job Match Score
-        |
-        v
-Web Dashboard
-        |
-        v
-AWS
+### 3. Start the web application
 
-## Planned AWS Components
+```bash
+python src/app.py
+```
 
-Potential AWS services include:
+Open [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser.
 
-- Amazon S3
-- AWS Lambda
-- Amazon API Gateway
-- Amazon DynamoDB
-- Amazon CloudFront
+## Repository contents
 
-AWS deployment will come after the local machine-learning model is working.
+- `src/app.py` — Flask web application and advert analysis
+- `src/train_model.py` — training and evaluation pipeline
+- `src/predict_job.py` — command-line prediction workflow
+- `src/add_jobs.py` — helper for expanding the sample job dataset
+- `data/jobs.csv` — labelled job examples for development
+- `data/candidate.json` — sample candidate profile
+- `data/job.json` — sample job input
+- `models/jobmatch_model.joblib` — saved model pipeline
+- `docs/images/` — project visuals used in this README
 
-## Development Approach
+## Limitations and responsible use
 
-1. Create and understand the dataset
-2. Clean and prepare the data
-3. Convert job text into numerical features
-4. Train a baseline ML model
-5. Evaluate the model
-6. Test predictions on unseen jobs
-7. Improve the dataset and model
-8. Build an API
-9. Deploy components to AWS
-10. Create a portfolio dashboard
+- The training dataset is small and manually assembled; it does not represent the full job market.
+- Advert extraction relies on a predefined set of recognised skills and text patterns. Unusual wording or an unrecognised skill may be missed.
+- Results depend on the quality of the candidate profile, advert text, training examples and current scoring rules.
+- Evaluation results on a small curated dataset should be treated as experimental, not as proof of general performance on unseen real-world adverts.
+- A low score does not mean a person cannot do a job, and a high score does not mean an employer will interview or hire them.
+- Review the original advert and requirements yourself. Use this tool as a decision-support and learning aid, not as an automated hiring decision.
 
-## Important Principle
+## Project status
 
-This project aims to demonstrate genuine machine learning rather than simply calling an external AI API.
-
-The model will be trained and evaluated using a labelled dataset, with appropriate evaluation metrics.
-
-## Project Location
-
-C:\Users\Administrator\job-match-ml
-
-
-
-## Model Evaluation
-
-JobMatch ML uses a TF-IDF text vectorisation and Logistic Regression pipeline to estimate how closely a job advert matches a candidate profile.
-
-### Five-Fold Cross-Validation Results
-
-The model was evaluated using stratified five-fold cross-validation on a dataset of 52 job examples.
-
-| Metric | Mean Score |
-|---|---:|
-| Accuracy | 92.36% |
-| Precision | 94.29% |
-| Recall | 92.00% |
-| F1-score | 91.67% |
-
-### Evaluation Approach
-
-Stratified five-fold cross-validation divides the dataset into five folds while maintaining a similar proportion of each class. The model is trained and evaluated across the folds to provide a broader assessment than a single train/test split.
-
-The final model is then trained on all 52 available examples and saved to `models/jobmatch_model.joblib` for use by the prediction script and Flask web application.
-
-### Limitations
-
-- The dataset contains only 52 manually assembled job examples.
-- Cross-validation results may not represent performance on real-world job adverts.
-- The variation in fold accuracy indicates that performance depends on which examples are held out for testing.
-- The model's predicted scores are not calibrated probabilities of securing a job.
-- A larger, more diverse dataset and further testing on genuinely unseen job adverts are needed before drawing strong conclusions about reliability.
-
-These results are preliminary and are intended to demonstrate the model evaluation process in a portfolio project, rather than establish production-level performance.
-
-
-
-### Application Testing
-
-The trained model was tested through both the command-line prediction script and the Flask web application.
-
-**Test 1: Unrelated job role**
-
-- Job title: Marketing Executive
-- Final match score: 31.70%
-- Result: POOR MATCH
-- Outcome: The system identified missing marketing-related skills and recommended prioritising other roles.
-
-**Test 2: Relevant cloud support role**
-
-- Job title: Junior AWS Cloud Support Engineer
-- Final match score: 84.79%
-- Result: EXCELLENT MATCH
-- ML relevance: 81.59%
-- Skill compatibility: 80.00%
-- Experience fit: 100%
-- Matched skills: AWS, Linux, Networking and Troubleshooting
-- Missing skill: CloudWatch
-- Outcome: The system recommended applying for the role.
-
-Both tests completed successfully. The results demonstrate that the application can load the trained model, calculate a combined match score, identify matched and missing skills, and generate a recommendation.
-
-These are functional tests using two example adverts, not proof of general predictive accuracy. The scoring system is a prototype and requires broader testing with unseen, real-world job adverts.
-
-## Functional Testing
-
-The JobMatch ML web application was tested against seven job descriptions covering relevant target roles, a senior cloud position, and unrelated careers.
-
-| Job title | Score | Result |
-|---|---:|---|
-| Senior AWS Cloud Engineer | 44.08% | Poor Match |
-| Retail Store Manager | 29.11% | Poor Match |
-| Junior IT Support Technician | 77.27% | Excellent Match |
-| Junior Cloud Support Engineer | 84.74% | Excellent Match |
-| Junior DevOps Engineer | 75.61% | Excellent Match |
-| Junior AWS Cloud Engineer | 67.09% | Good Match |
-| Junior Data Analyst | 37.15% | Poor Match |
-
-### Findings
-
-- The application identified relevant junior IT, cloud support, and DevOps roles as promising matches.
-- It gave lower scores to the unrelated retail and data analyst roles.
-- The senior cloud role received a lower score, reflecting the experience and skills gaps in the test profile.
-- The results demonstrate that the application and scoring pipeline work across several different job descriptions.
-
-### Limitations
-
-These seven examples were deliberately selected and do not establish general predictive accuracy. The training dataset is small, skill matching is based on simple text matching, and the final score is a suitability heuristic rather than a probability of being hired. Further testing with a larger, independent dataset would be required to assess real-world performance.
-
-
-
-### Web Application Test
-
-The Flask web application was tested using a Junior Cloud Support Engineer job description.
-
-- Final match score: 81.76%
-- Result: EXCELLENT MATCH
-- ML relevance: 78.52%
-- Skill compatibility: 75.00%
-- Experience fit: 100%
-- Matched skills: AWS, Linux, Networking
-- Missing skills: Troubleshooting, CloudWatch
-- Recommendation: Apply - strong overall match.
-
-The application successfully displayed the match score, rating, skill comparison and recommendation. This is a functional test of the current prototype, not evidence of general predictive accuracy.
-
-### Real Job Advert Input Tests
-
-The Flask application was extended to accept a complete job advert pasted into a single text area. The prototype extracts the job title, recognised skills and stated experience requirements using rule-based text processing before calculating the combined match score.
-
-**Test 1: Junior AWS Cloud Support Engineer**
-
-- Input method: Complete job advert pasted into Option 1.
-- Final match score: 86.34%
-- Result: EXCELLENT MATCH
-- ML relevance: 82.67%
-- Skill compatibility: 83.33%
-- Experience fit: 100%
-- Matched skills: AWS, Linux, Networking, Troubleshooting and Windows.
-- Missing skill: CloudWatch.
-- Outcome: The application recommended applying for the role.
-
-**Test 2: Retail Store Manager**
-
-- Input method: Complete job advert pasted into Option 1.
-- Final match score: 29.31%
-- Result: POOR MATCH
-- ML relevance: 30.63%
-- Skill compatibility: 0.00%
-- Experience fit: 70%.
-- Matched skills: None.
-- Missing skills: Retail Management, Retail, Leadership, Staff Training, Training, Stock Control, Sales, Communication, Customer Service, Customer Complaints and Health and Safety.
-- Outcome: The application recommended prioritising other roles.
-
-**Findings**
-
-The tests demonstrate that the application can process pasted adverts for different job types and distinguish a relevant cloud support role from an unrelated retail management role. The retail test also confirmed that the previous issue, in which cloud skills appeared against the retail advert, was resolved after restarting the Flask application.
-
-**Limitations**
-
-Advert extraction currently uses a predefined vocabulary of recognised skills and regular expressions. It may miss skills expressed in unfamiliar wording, and it does not reliably understand every job title or experience requirement. The match score remains a prototype suitability estimate, not a probability of being hired. Further evaluation against a larger collection of independent real-world adverts is required.
+This is an actively developed portfolio project. The current focus is on making the scoring explainable, testing pasted job adverts, improving skill recognition and documenting the model's limitations before any public hosted demo is considered.

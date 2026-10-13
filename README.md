@@ -190,3 +190,18 @@ The JobMatch ML web application was tested against seven job descriptions coveri
 These seven examples were deliberately selected and do not establish general predictive accuracy. The training dataset is small, skill matching is based on simple text matching, and the final score is a suitability heuristic rather than a probability of being hired. Further testing with a larger, independent dataset would be required to assess real-world performance.
 
 
+
+### Web Application Test
+
+The Flask web application was tested using a Junior Cloud Support Engineer job description.
+
+- Final match score: 81.76%
+- Result: EXCELLENT MATCH
+- ML relevance: 78.52%
+- Skill compatibility: 75.00%
+- Experience fit: 100%
+- Matched skills: AWS, Linux, Networking
+- Missing skills: Troubleshooting, CloudWatch
+- Recommendation: Apply - strong overall match.
+
+The application successfully displayed the match score, rating, skill comparison and recommendation. This is a functional test of the current prototype, not evidence of general predictive accuracy.

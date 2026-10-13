@@ -163,3 +163,30 @@ The trained model was tested through both the command-line prediction script and
 Both tests completed successfully. The results demonstrate that the application can load the trained model, calculate a combined match score, identify matched and missing skills, and generate a recommendation.
 
 These are functional tests using two example adverts, not proof of general predictive accuracy. The scoring system is a prototype and requires broader testing with unseen, real-world job adverts.
+
+## Functional Testing
+
+The JobMatch ML web application was tested against seven job descriptions covering relevant target roles, a senior cloud position, and unrelated careers.
+
+| Job title | Score | Result |
+|---|---:|---|
+| Senior AWS Cloud Engineer | 44.08% | Poor Match |
+| Retail Store Manager | 29.11% | Poor Match |
+| Junior IT Support Technician | 77.27% | Excellent Match |
+| Junior Cloud Support Engineer | 84.74% | Excellent Match |
+| Junior DevOps Engineer | 75.61% | Excellent Match |
+| Junior AWS Cloud Engineer | 67.09% | Good Match |
+| Junior Data Analyst | 37.15% | Poor Match |
+
+### Findings
+
+- The application identified relevant junior IT, cloud support, and DevOps roles as promising matches.
+- It gave lower scores to the unrelated retail and data analyst roles.
+- The senior cloud role received a lower score, reflecting the experience and skills gaps in the test profile.
+- The results demonstrate that the application and scoring pipeline work across several different job descriptions.
+
+### Limitations
+
+These seven examples were deliberately selected and do not establish general predictive accuracy. The training dataset is small, skill matching is based on simple text matching, and the final score is a suitability heuristic rather than a probability of being hired. Further testing with a larger, independent dataset would be required to assess real-world performance.
+
+

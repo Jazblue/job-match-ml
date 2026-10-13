@@ -101,3 +101,65 @@ The model will be trained and evaluated using a labelled dataset, with appropria
 ## Project Location
 
 C:\Users\Administrator\job-match-ml
+
+
+
+## Model Evaluation
+
+JobMatch ML uses a TF-IDF text vectorisation and Logistic Regression pipeline to estimate how closely a job advert matches a candidate profile.
+
+### Five-Fold Cross-Validation Results
+
+The model was evaluated using stratified five-fold cross-validation on a dataset of 52 job examples.
+
+| Metric | Mean Score |
+|---|---:|
+| Accuracy | 92.36% |
+| Precision | 94.29% |
+| Recall | 92.00% |
+| F1-score | 91.67% |
+
+### Evaluation Approach
+
+Stratified five-fold cross-validation divides the dataset into five folds while maintaining a similar proportion of each class. The model is trained and evaluated across the folds to provide a broader assessment than a single train/test split.
+
+The final model is then trained on all 52 available examples and saved to `models/jobmatch_model.joblib` for use by the prediction script and Flask web application.
+
+### Limitations
+
+- The dataset contains only 52 manually assembled job examples.
+- Cross-validation results may not represent performance on real-world job adverts.
+- The variation in fold accuracy indicates that performance depends on which examples are held out for testing.
+- The model's predicted scores are not calibrated probabilities of securing a job.
+- A larger, more diverse dataset and further testing on genuinely unseen job adverts are needed before drawing strong conclusions about reliability.
+
+These results are preliminary and are intended to demonstrate the model evaluation process in a portfolio project, rather than establish production-level performance.
+
+
+
+### Application Testing
+
+The trained model was tested through both the command-line prediction script and the Flask web application.
+
+**Test 1: Unrelated job role**
+
+- Job title: Marketing Executive
+- Final match score: 31.70%
+- Result: POOR MATCH
+- Outcome: The system identified missing marketing-related skills and recommended prioritising other roles.
+
+**Test 2: Relevant cloud support role**
+
+- Job title: Junior AWS Cloud Support Engineer
+- Final match score: 84.79%
+- Result: EXCELLENT MATCH
+- ML relevance: 81.59%
+- Skill compatibility: 80.00%
+- Experience fit: 100%
+- Matched skills: AWS, Linux, Networking and Troubleshooting
+- Missing skill: CloudWatch
+- Outcome: The system recommended applying for the role.
+
+Both tests completed successfully. The results demonstrate that the application can load the trained model, calculate a combined match score, identify matched and missing skills, and generate a recommendation.
+
+These are functional tests using two example adverts, not proof of general predictive accuracy. The scoring system is a prototype and requires broader testing with unseen, real-world job adverts.

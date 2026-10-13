@@ -205,3 +205,39 @@ The Flask web application was tested using a Junior Cloud Support Engineer job d
 - Recommendation: Apply - strong overall match.
 
 The application successfully displayed the match score, rating, skill comparison and recommendation. This is a functional test of the current prototype, not evidence of general predictive accuracy.
+
+### Real Job Advert Input Tests
+
+The Flask application was extended to accept a complete job advert pasted into a single text area. The prototype extracts the job title, recognised skills and stated experience requirements using rule-based text processing before calculating the combined match score.
+
+**Test 1: Junior AWS Cloud Support Engineer**
+
+- Input method: Complete job advert pasted into Option 1.
+- Final match score: 86.34%
+- Result: EXCELLENT MATCH
+- ML relevance: 82.67%
+- Skill compatibility: 83.33%
+- Experience fit: 100%
+- Matched skills: AWS, Linux, Networking, Troubleshooting and Windows.
+- Missing skill: CloudWatch.
+- Outcome: The application recommended applying for the role.
+
+**Test 2: Retail Store Manager**
+
+- Input method: Complete job advert pasted into Option 1.
+- Final match score: 29.31%
+- Result: POOR MATCH
+- ML relevance: 30.63%
+- Skill compatibility: 0.00%
+- Experience fit: 70%.
+- Matched skills: None.
+- Missing skills: Retail Management, Retail, Leadership, Staff Training, Training, Stock Control, Sales, Communication, Customer Service, Customer Complaints and Health and Safety.
+- Outcome: The application recommended prioritising other roles.
+
+**Findings**
+
+The tests demonstrate that the application can process pasted adverts for different job types and distinguish a relevant cloud support role from an unrelated retail management role. The retail test also confirmed that the previous issue, in which cloud skills appeared against the retail advert, was resolved after restarting the Flask application.
+
+**Limitations**
+
+Advert extraction currently uses a predefined vocabulary of recognised skills and regular expressions. It may miss skills expressed in unfamiliar wording, and it does not reliably understand every job title or experience requirement. The match score remains a prototype suitability estimate, not a probability of being hired. Further evaluation against a larger collection of independent real-world adverts is required.
